@@ -30,7 +30,7 @@ const resizeLogo = async (baseWidth: number, baseHight: number) => {
 
 const generateQrCode = async (
   data: string,
-  edgeSize = 500
+  edgeSize = 150
 ): Promise<string> => {
   const canvas = createCanvas(edgeSize, edgeSize);
 
