@@ -71,10 +71,3 @@ export const GET = apiHandler.create({
     return qrBlob;
   },
 });
-
-// 型 '({ session, input }: Context<ZodObject<{ code: ZodString; }, "strip", ZodTypeAny, { code: string; }, { code: string; }>, false>) => Promise<QrResponse>' を型 '((ctx: Context<ZodObject<{ code: ZodString; }, "strip", ZodTypeAny, { code: string; }, { code: string; }>, false>) => ResponseJson | Promise<...> | Promise<...>) | ((ctx: Context<...>) => ResponseJson | ... 1 more ... | Promise<...>)' に割り当てることはできません。
-// 型 '({ session, input }: Context<ZodObject<{ code: ZodString; }, "strip", ZodTypeAny, { code: string; }, { code: string; }>, false>) => Promise<QrResponse>' を型 '(ctx: Context<ZodObject<{ code: ZodString; }, "strip", ZodTypeAny, { code: string; }, { code: string; }>, false>) => ResponseJson | Promise<...> | Promise<...>' に割り当てることはできません。
-// 型 'Promise<QrResponse>' を型 'ResponseJson | Promise<ResponseJson> | Promise<Blob>' に割り当てることはできません。
-// 型 'Promise<QrResponse>' を型 'Promise<ResponseJson>' に割り当てることはできません。
-// 型 'QrResponse' を型 'ResponseJson' に割り当てることはできません。
-//           型 'string' is missing in type 'QrResponse' のインデックス シグネチャがありません。
