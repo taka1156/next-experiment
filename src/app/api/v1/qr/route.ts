@@ -14,29 +14,32 @@ const headers = new Headers();
 headers.set('Content-Type', 'Image/png');
 
 /**
- * 
- * @param baseWidth {大元のキャンバスの横幅}
- * @param baseHight {大元のキャンバスの縦幅}
- * @returns 
+ *
+ * @param baseEdgeSize {QRコード画像(大元)の一辺のサイズ}
+ * @returns
  */
-const resizeLogo = async (baseWidth: number, baseHight: number) => {
-  const canvas = createCanvas(baseWidth / 4, baseHight / 4);
+const resizeLogo = async (baseEdgeSize: number) => {
+  const logoEdgeSize = baseEdgeSize / 4;
+  const canvas = createCanvas(logoEdgeSize, logoEdgeSize);
   const ctx = canvas.getContext('2d');
   const logo = await loadImage(logoUrl);
-  ctx.drawImage(logo, 0, 0, baseWidth / 4, baseHight / 4);
+  ctx.drawImage(logo, 0, 0, logoEdgeSize, logoEdgeSize);
   return canvas.toDataURL();
 };
 
-
+/**
+ *
+ * @param data {QRコードの内容}
+ * @param edgeSize {QRコード画像の一辺のサイズ}
+ * @returns
+ */
 const generateQrCode = async (
   data: string,
   edgeSize = 150
 ): Promise<string> => {
   const canvas = createCanvas(edgeSize, edgeSize);
 
-  const segment: QRCodeSegment[] = [
-    { data: data},
-  ];
+  const segment: QRCodeSegment[] = [{ data: data }];
   const options: QRCodeRenderersOptions = {
     margin: 1,
     width: edgeSize,
@@ -47,7 +50,7 @@ const generateQrCode = async (
   await QRCode.toCanvas(canvas, segment, options);
 
   // ロゴサイズ調整
-  const resizeLogoImg = await resizeLogo(canvas.width, canvas.height);
+  const resizeLogoImg = await resizeLogo(edgeSize);
   const logo = await loadImage(resizeLogoImg);
 
   // ロゴの位置調整
@@ -64,7 +67,7 @@ export const GET = apiHandler.create({
   inputSchema: generateQrSchema,
   headers,
   handler: async ({ session, input }): Promise<QrResponse> => {
-    const code = input.code || "https://www.taka1156.site";
+    const code = input.code || 'https://www.taka1156.site';
     const qrDataUrl = await generateQrCode(code);
     const qrBlob = (await fetch(qrDataUrl)).blob();
 
