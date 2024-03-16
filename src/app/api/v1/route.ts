@@ -4,7 +4,7 @@ export const GET = apiHandler.create({
   authentication: false,
   handler: async () => {
     return {
-        statusMsg: "Hello World"
+        statusMsg: "Running Server v1"
     };
   },
 });
