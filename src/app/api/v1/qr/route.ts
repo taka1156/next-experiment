@@ -43,6 +43,7 @@ const generateQrCode = async (
   const options: QRCodeRenderersOptions = {
     margin: 1,
     width: edgeSize,
+    errorCorrectionLevel: 'H',
   };
 
   // canvas、QR生成
