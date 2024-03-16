@@ -15,7 +15,7 @@ Using Homebrew:
 brew install pkg-config cairo pango libpng jpeg giflib librsvg pixman
 ```
 
-qrcode 出力テスト結果
+## QR Code 出力テスト結果
 
 > Error correction capability allows to successfully scan a QR Code even if the symbol is dirty or damaged. Four levels are available to choose according to the operating environment.
 >
@@ -51,3 +51,7 @@ qrcode 出力テスト結果
 
   ![qr](https://github.com/taka1156/next-experiment/assets/47517002/3d23b985-6492-4da6-8322-801c9939e7a0)
 </details>
+
+## バーコード 出力テスト
+![barcode](https://github.com/taka1156/next-experiment/assets/47517002/d0e02405-feff-486c-b3ea-4d851543f4f9)
+
